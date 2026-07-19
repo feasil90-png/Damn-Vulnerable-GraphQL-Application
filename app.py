@@ -15,7 +15,9 @@ app.config['SECRET_KEY'] = 'dvga'
 app.config["JWT_SECRET_KEY"] = 'dvga'
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 120
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = 30
-
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port, debug=False)
 auth = GraphQLAuth(app)
 
 app.app_protocol = lambda environ_path_info: 'graphql-ws'
